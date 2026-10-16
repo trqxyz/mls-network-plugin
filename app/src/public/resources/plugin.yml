@@ -1,0 +1,92 @@
+name: MLSAC
+version: '${version}'
+main: italy.mlsac.net.bootstrap.MlsacPlugin
+api-version: '1.16'
+description: MLSAC.NET - AI Anticheat
+folia-supported: true
+softdepend: [WorldGuard, floodgate, Geyser-Spigot]
+commands:
+  mlsac:
+    description: MLSAC anticheat commands
+    aliases: [ml, mls]
+    usage: /mlsac <alerts|monitor|menu|suspects|punish|profile|reload|status|animation|reinstall|data>
+permissions:
+  mlsac.command.alerts:
+    description: /mlsac alerts
+    default: false
+  mlsac.command.monitor:
+    description: /mlsac monitor
+    default: false
+  mlsac.command.suspects:
+    description: /mlsac menu and /mlsac suspects
+    default: false
+  mlsac.command.profile:
+    description: /mlsac profile
+    default: false
+  mlsac.command.punish:
+    description: /mlsac punish
+    default: false
+  mlsac.command.data:
+    description: /mlsac data cheat|legit restore
+    default: false
+  mlsac.command.falsepositive:
+    description: Older name of mlsac.command.data
+    default: false
+  mlsac.command.status:
+    description: /mlsac status
+    default: false
+  mlsac.command.debug:
+    description: /mlsac debug (verbose diagnostics in the console)
+    default: false
+  mlsac.command.reload:
+    description: /mlsac reload
+    default: false
+  mlsac.command.reinstall:
+    description: /mlsac reinstall
+    default: false
+  mlsac.command.animation:
+    description: /mlsac animation
+    default: false
+  mlsac.notify.alerts:
+    description: Receive alerts, nametags and the alert sound
+    default: false
+  mlsac.bypass:
+    description: Exempt from all checks
+    default: false
+    children:
+      mlsac.suppression.bypass: true
+  mlsac.suppression.bypass:
+    description: No in-game suppression effects (ladder commands still run)
+    default: false
+  mlsac.admin:
+    description: Everything (previous scheme)
+    default: op
+    children:
+      mlsac.alerts: true
+      mlsac.prob: true
+      mlsac.reload: true
+      mlsac.command.punish: true
+      mlsac.command.data: true
+      mlsac.command.status: true
+      mlsac.command.debug: true
+      mlsac.command.reinstall: true
+      mlsac.command.animation: true
+      mlsac.suppression.bypass: true
+  mlsac.alerts:
+    description: Alerts and staff menus (previous scheme)
+    default: op
+    children:
+      mlsac.command.alerts: true
+      mlsac.command.monitor: true
+      mlsac.command.suspects: true
+      mlsac.notify.alerts: true
+  mlsac.prob:
+    description: Player profiles (previous scheme)
+    default: op
+    children:
+      mlsac.command.profile: true
+  mlsac.reload:
+    description: Reload (previous scheme)
+    default: op
+    children:
+      mlsac.command.reload: true
